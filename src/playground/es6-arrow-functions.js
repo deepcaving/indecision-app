@@ -8,3 +8,4 @@ const square = function (x) {
 
 const squareArrow = (x) => x * x;
 console.log(squareArrow(9));
+console.log("asdf");

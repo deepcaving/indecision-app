@@ -1,25 +1,64 @@
-'use strict';
+"use strict";
 
-var nameVar = 'Andrew';
-var nameVar = 'Mike';
-console.log('nameVar', nameVar);
+console.log('App.js is running!');
 
-var nameLet = 'Jen';
-nameLet = 'Julie';
-console.log('nameLet', nameLet);
-
-var nameConst = 'Frank';
-console.log('nameConst', nameConst);
-
-// Block scoping
-
-var fullName = 'Jen Mead';
-var getFirstName = function getFirstName(fullName) {
-    return fullName.split(' ')[0];
+// JSX - JavaScript XML
+var app = {
+    title: "Best book ever",
+    subtitle: "So cool!",
+    options: ['One', 'Two']
 };
+var template = React.createElement(
+    "div",
+    null,
+    React.createElement(
+        "h1",
+        null,
+        app.title
+    ),
+    app.subtitle && React.createElement(
+        "p",
+        null,
+        app.subtitle
+    ),
+    React.createElement(
+        "p",
+        null,
+        app.options.length > 0 ? "Here are your options" : "No options"
+    )
+);
 
-var getFirstNameShort = function getFirstNameShort(fullName) {
-    return fullName.split(' ')[0];
+var user = {
+    name: 'Andrew',
+    age: 26,
+    location: 'New York'
 };
+function getLocation(location) {
+    if (location) {
+        return React.createElement(
+            "p",
+            null,
+            "Location: ",
+            location
+        );
+    }
+}
+var templateTwo = React.createElement(
+    "div",
+    null,
+    React.createElement(
+        "h1",
+        null,
+        user.name ? user.name : 'Anonymous'
+    ),
+    user.age && user.age >= 18 && React.createElement(
+        "p",
+        null,
+        "Age: ",
+        user.age
+    ),
+    getLocation(user.location)
+);
+var appRoute = document.getElementById('app');
 
-console.log(getFirstNameShort('Mike Smith'));
+ReactDOM.render(template, appRoute);
